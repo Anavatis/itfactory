@@ -19,4 +19,7 @@ def register_extensions(app):
 
 
 def register_blueprints(app):
-    ...
+
+    from .store.views import store
+
+    app.register_blueprint(store)
