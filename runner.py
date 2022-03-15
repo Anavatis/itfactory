@@ -7,6 +7,9 @@ from app import create_app
 from app import db
 
 
+from models import employee, store
+
+
 app = create_app()
 app.config.from_object(os.environ.get('FLASK_CONFIG'))
 
