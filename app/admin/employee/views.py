@@ -26,7 +26,7 @@ def get():
 @admin_employee.route('/', methods=["POST"])
 @admin_required
 def create():
-    phone_number = request.json.get('phone_number')
+    phone_number = request.json.get('phone')
     name = request.json.get('name')
 
     if not phone_number or not name:
@@ -39,7 +39,7 @@ def create():
 @admin_employee.route('/', methods=["PATCH"])
 @admin_required
 def edit():
-    phone_number = request.json.pop('phone_number')
+    phone_number = request.json.pop('phone', None)
 
     if not phone_number:
         raise ErrorResponseModel(400, "Incorrect data")
@@ -51,7 +51,7 @@ def edit():
 @admin_employee.route('/', methods=["DELETE"])
 @admin_required
 def delete():
-    phone_number = request.json.get('phone_number')
+    phone_number = request.json.get('phone')
 
     if not phone_number:
         raise ErrorResponseModel(400, "Incorrect data")

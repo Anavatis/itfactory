@@ -12,7 +12,7 @@ def create_visit(phone_number: str,
     check_phone_linked_to_store(store, phone_number)
 
     visit = Visit(store_name=store_name,
-                  phone_number=phone_number,
+                  employee_phone=phone_number,
                   latitude=latitude,
                   longitude=longitude)
     db.session.add(visit)
