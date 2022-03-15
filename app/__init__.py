@@ -21,5 +21,13 @@ def register_extensions(app):
 def register_blueprints(app):
 
     from .store.views import store
+    from .error.views import error
+    from .admin.employee.views import admin_employee
+    from .admin.store.views import admin_store
+    from .admin.visit.views import admin_visit
 
     app.register_blueprint(store)
+    app.register_blueprint(error)
+    app.register_blueprint(admin_employee)
+    app.register_blueprint(admin_store)
+    app.register_blueprint(admin_visit)

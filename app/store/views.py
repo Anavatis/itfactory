@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 
+from app.error.schemas import ErrorResponseModel
 from app.store.get import get_stores_by_phone
 from app.store.utils import create_visit
 
@@ -11,7 +12,7 @@ def get_store():
     phone_number = request.args.get('phone')
     count = request.args.get('count', 10)
 
-    if not phone_number: raise
+    if not phone_number: raise ErrorResponseModel(401, "Missed phone_number")
 
     stores = get_stores_by_phone(phone_number, count)
     store_names = [s.name for s in stores]
@@ -28,7 +29,6 @@ def visit_store():
     longitude = request.json.get('longitude')
 
     visit = create_visit(phone_number, store_name, latitude, longitude)
-    print(visit)
 
     return jsonify({"result": visit})
 
